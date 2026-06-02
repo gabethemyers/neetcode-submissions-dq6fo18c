@@ -1,0 +1,25 @@
+class Solution:
+    def minEatingSpeed(self, piles: List[int], h: int) -> int:
+        # search through k
+
+        right = max(piles)
+
+        left = 1
+
+
+        while left < right:
+            mid = (right + left) // 2
+
+            total_hours = 0
+
+            for pile in piles:
+                total_hours += math.ceil(pile / mid)
+            
+            if total_hours <= h:
+                right = mid
+            else:
+                left = mid + 1
+        
+        return left
+
+        
